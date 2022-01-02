@@ -1,0 +1,93 @@
+bascong:
+  download-count: 1000
+  over-tip: 数据量不能超过%d，否则Excel装载过大会导致异常，如果数据量确实很大，请分开多次导出
+basic:
+  max-limit: 500
+  max-offset: 10000
+spring:
+  mutildata:
+    basic:
+      driver-class-name: com.mysql.jdbc.Driver
+      filters: stat
+      initial-size: 20
+      logAbandoned: true
+      maxActive: 300
+      maxPoolPreparedStatementPerConnectionSize: 20
+      maxWait: 60000
+      min-idle: 5
+      minEvictableIdleTimeMillis: 300000
+      poolPreparedStatements: true
+      removeAbandoned: true
+      removeAbandonedTimeout: 1800
+      testOnBorrow: false
+      testOnReturn: false
+      testWhileIdle: true
+      timeBetweenEvictionRunsMillis: 60000
+      validationQuery: SELECT 1
+      password: 123456
+      type: com.alibaba.druid.pool.DruidDataSource
+      url: jdbc:mysql://127.0.0.1:3306/mysql_01?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+      username: root
+    mutil-data-core:
+      basic:
+        password: 123456
+        url: jdbc:mysql://127.0.0.1:3306/mysql_01?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+        username: root
+      cloud:
+        password: 123456
+        url: jdbc:mysql://127.0.0.1:3306/mysql_02?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+        username: root
+      attend:
+        password: 123456
+        url: jdbc:mysql://127.0.0.1:3306/mysql_03?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+        username: root
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    druid: # 配置了多数据源之后，这边其实没什么作用了
+      filters: stat
+      initial-size: 20
+      logAbandoned: true
+      maxActive: 300
+      maxPoolPreparedStatementPerConnectionSize: 20
+      maxWait: 60000
+      min-idle: 5
+      minEvictableIdleTimeMillis: 300000
+      poolPreparedStatements: true
+      removeAbandoned: true
+      removeAbandonedTimeout: 1800
+      testOnBorrow: false
+      testOnReturn: false
+      testWhileIdle: true
+      timeBetweenEvictionRunsMillis: 60000
+      validationQuery: SELECT 1
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/mysql_01?autoReconnect=true&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+    username: root
+  jpa:
+    database: MYSQL
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+  profiles:
+    include: debug # debug测试环境，beta预生产环境，online生产环境
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  global-config:
+    # 逻辑删除配置
+    db-config:
+      # 删除前
+      logic-not-delete-value: 1
+      # 删除后
+      logic-delete-value: 0
+system:
+  cache:
+    defaultExpiration: 60
+    erpExpiration: 86400
+server:
+  port: 8888 # 指定端口
