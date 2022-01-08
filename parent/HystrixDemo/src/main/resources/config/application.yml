@@ -1,0 +1,8 @@
+bascong:
+  download-count: 1000
+  over-tip: 数据量不能超过%d，否则Excel装载过大会导致异常，如果数据量确实很大，请分开多次导出
+basic:
+  max-limit: 500
+  max-offset: 10000
+server:
+  port: 8889 # 指定端口
