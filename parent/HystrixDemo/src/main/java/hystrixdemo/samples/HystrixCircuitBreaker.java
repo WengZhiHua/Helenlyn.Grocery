@@ -28,9 +28,9 @@ public class HystrixCircuitBreaker extends HystrixCommand<String> {
     private final String name;
 
     public HystrixCircuitBreaker(String name) {
-        super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("CircuitBreakerTestGroup"))
-                        .andCommandKey(HystrixCommandKey.Factory.asKey("CircuitBreakerTestKey"))
-                        .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("CircuitBreakerTest"))
+        super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("Group:CircuitBreaker"))
+                        .andCommandKey(HystrixCommandKey.Factory.asKey("Command:CircuitBreaker"))
+                        .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey("ThreadPool:CircuitBreakerTest"))
                         .andThreadPoolPropertiesDefaults(    // 配置线程池
                                 HystrixThreadPoolProperties.Setter()
                                         .withCoreSize(200)    // 配置线程池里的线程数，设置足够多线程，以防未熔断却打满threadpool
@@ -38,10 +38,10 @@ public class HystrixCircuitBreaker extends HystrixCommand<String> {
                         .andCommandPropertiesDefaults(    // 配置熔断器
                                 HystrixCommandProperties.Setter()
                                         .withCircuitBreakerEnabled(true)
-                                        .withCircuitBreakerRequestVolumeThreshold(3)
-                                        .withCircuitBreakerErrorThresholdPercentage(80)
-//                		.withCircuitBreakerForceOpen(true)	// 置为true时，所有请求都将被拒绝，直接到fallback
-//                		.withCircuitBreakerForceClosed(true)	// 置为true时，将忽略错误
+                                        .withCircuitBreakerRequestVolumeThreshold(10)
+                                        .withCircuitBreakerErrorThresholdPercentage(50)
+//                		.withCircuitBreakerForceOpen(true)	// true时强制将断路器设置成开启状态，所有请求都将被拒绝，直接到fallback
+//                		.withCircuitBreakerForceClosed(true)	// true时强制将断路器设置成关闭状态，将忽略所有错误
 //                		.withExecutionIsolationStrategy(ExecutionIsolationStrategy.SEMAPHORE)	// 信号量隔离
 //                		.withExecutionTimeoutInMilliseconds(5000)
                         )
@@ -51,17 +51,15 @@ public class HystrixCircuitBreaker extends HystrixCommand<String> {
 
     @Override
     protected String run() throws Exception {
-        System.out.println("running run():" + name);
+        System.out.println("running num :" + name);
         int num = Integer.valueOf(name);
-        if (num % 2 == 0 && num < 10) {    // 直接返回
+        if (num % 2 == 0 && num < 30) {    // 符合条件，直接返回
             return name;
-        } else {    // 无限循环模拟超时
+        } else {    // 模拟异常
             int j = 0;
-            while (true) {
-                j++;
-            }
+            j = num / j;
         }
-//		return name;
+        return name;
     }
 
     @Override

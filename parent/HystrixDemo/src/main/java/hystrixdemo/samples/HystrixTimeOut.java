@@ -7,7 +7,7 @@ import com.netflix.hystrix.exception.HystrixBadRequestException;
  * @author brand
  * @Description: 超时fallBack
  * @Copyright: Copyright (c) 2022
- * @Company: Baidu, Inc. All Rights Reserved.
+ * @Company: Helenlyn, Inc. All Rights Reserved.
  * @date 2022/1/8 下午5:32
  * @Update Time:
  * @Updater:

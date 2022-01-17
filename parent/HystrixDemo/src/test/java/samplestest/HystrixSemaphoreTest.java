@@ -11,7 +11,7 @@ import java.util.Map;
  * @author brand
  * @Description: 信号量隔离测试
  * @Copyright: Copyright (c) 2022
- * @Company: Baidu, Inc. All Rights Reserved.
+ * @Company: Helenlyn, Inc. All Rights Reserved.
  * @date 2022/1/8 下午6:06
  * @Update Time:
  * @Updater:

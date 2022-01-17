@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
  * @author brand
  * @Description: queue() 命令
  * @Copyright: Copyright (c) 2022
- * @Company: Baidu, Inc. All Rights Reserved.
+ * @Company: Helenlyn, Inc. All Rights Reserved.
  * @date 2022/1/8 下午5:01
  * @Update Time:
  * @Updater:

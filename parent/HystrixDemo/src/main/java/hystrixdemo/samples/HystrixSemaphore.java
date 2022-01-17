@@ -11,7 +11,7 @@ import com.netflix.hystrix.HystrixThreadPoolKey;
  * @author brand
  * @Description: 信号量隔离
  * @Copyright: Copyright (c) 2022
- * @Company: Baidu, Inc. All Rights Reserved.
+ * @Company: Helenlyn, Inc. All Rights Reserved.
  * @date 2022/1/8 下午6:04
  * @Update Time:
  * @Updater:

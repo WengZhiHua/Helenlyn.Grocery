@@ -8,7 +8,7 @@ import rx.Subscriber;
  * @author brand
  * @Description: HystrixObservableCommand 相关
  * @Copyright: Copyright (c) 2022
- * @Company: Baidu, Inc. All Rights Reserved.
+ * @Company: Helenlyn, Inc. All Rights Reserved.
  * @date 2022/1/8 下午4:37
  * @Update Time:
  * @Updater:

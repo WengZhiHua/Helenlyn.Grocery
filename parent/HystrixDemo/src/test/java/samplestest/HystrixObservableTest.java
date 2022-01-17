@@ -9,7 +9,7 @@ import rx.Observer;
  * @author brand
  * @Description: observe() 命令
  * @Copyright: Copyright (c) 2022
- * @Company: Baidu, Inc. All Rights Reserved.
+ * @Company: Helenlyn, Inc. All Rights Reserved.
  * @date 2022/1/8 下午5:10
  * @Update Time:
  * @Updater:

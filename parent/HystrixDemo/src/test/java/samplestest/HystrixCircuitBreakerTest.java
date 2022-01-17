@@ -10,7 +10,7 @@ import java.util.Map;
  * @author brand
  * @Description: 熔断相关
  * @Copyright: Copyright (c) 2022
- * @Company: Baidu, Inc. All Rights Reserved.
+ * @Company: Helenlyn, Inc. All Rights Reserved.
  * @date 2022/1/8 下午5:50
  * @Update Time:
  * @Updater:

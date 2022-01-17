@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  * @author brand
  * @Description: 线程池隔离
  * @Copyright: Copyright (c) 2022
- * @Company: Baidu, Inc. All Rights Reserved.
+ * @Company: Helenlyn, Inc. All Rights Reserved.
  * @date 2022/1/8 下午5:58
  * @Update Time:
  * @Updater:
@@ -73,7 +73,7 @@ public class HystrixThreadPool extends HystrixCommand<String> {
 
         // HystrixBadRequestException异常由非法参数或非系统错误引起，不会触发fallback，也不会被计入熔断器
 //        throw new HystrixBadRequestException("HystrixBadRequestException is never trigger fallback");
-        TimeUnit.MILLISECONDS.sleep(2000);
+        TimeUnit.MILLISECONDS.sleep(1000);
         return name;
     }
 

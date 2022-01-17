@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
  * @author brand
  * @Description: 线程池隔离测试
  * @Copyright: Copyright (c) 2022
- * @Company: Baidu, Inc. All Rights Reserved.
+ * @Company: Helenlyn, Inc. All Rights Reserved.
  * @date 2022/1/8 下午6:01
  * @Update Time:
  * @Updater:
@@ -21,20 +21,20 @@ import java.util.concurrent.TimeUnit;
 public class HystrixThreadPoolTest {
     @Test
     public void testSynchronous() throws IOException {
-        for(int i = 0; i < 10; i++) {
+        for(int i = 0; i < 3; i++) {
             try {
 //	        		assertEquals("fallback: Hlx", new HystrixCommand4ThreadPoolTest("Hlx").execute());
 //	        		System.out.println("===========" + new HystrixCommand4ThreadPoolTest("Hlx").execute());
-                Future<String> future = new HystrixThreadPool("Hlx"+i).queue();
+                Future<String> future = new HystrixThreadPool("thread pool"+i).queue();
 //	        		System.out.println("===========" + future);
             } catch(Exception e) {
                 System.out.println("run()抛出HystrixBadRequestException时，被捕获到这里" + e.getCause());
             }
         }
-        for(int i = 0; i < 20; i++) {
+        for(int i = 0; i < 10; i++) {
             try {
                 //        		assertEquals("fallback: Hlx", new HystrixCommand4ThreadPoolTest("Hlx").execute());
-                System.out.println("===========" + new HystrixThreadPool("Hlx").execute());
+                System.out.println("===========" + new HystrixThreadPool("thread pool").execute());
 //	        		Future<String> future = new HystrixCommand4ThreadPoolTest("Hlx1"+i).queue();
 //	        		System.out.println("===========" + future);
             } catch(Exception e) {
