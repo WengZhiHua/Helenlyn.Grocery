@@ -1,142 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>parent</artifactId>
+        <groupId>helenlyn.grocery</groupId>
+        <version>1.1.1</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>helenlyn.grocery</groupId>
-    <artifactId>parent</artifactId>
-    <version>1.1.1</version>
-    <name>parent</name>
-    <description>parent project for grocery</description>
-    <packaging>pom</packaging>
 
-    <!--    在父工程添加子工程名称-->
-    <modules>
-        <module>DynamicDataSource</module>
-        <module>HystrixDemo</module>
-        <module>RpcCommon</module>
-        <module>RpcProvider</module>
-        <module>RpcConsume</module>
-    </modules>
-
+    <artifactId>RpcProvider</artifactId>
 
     <properties>
         <java.version>1.8</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <org.springframework.version>5.0.2.RELEASE</org.springframework.version>
-        <protobuf.version>2.4.1</protobuf.version>
-        <guava.version>20.0</guava.version>
-        <lombok.version>1.18.2</lombok.version>
-        <slf4j.version>1.7.25</slf4j.version>
-        <logbak.version>1.2.3</logbak.version>
-        <curator.version>2.9.1</curator.version>
-        <zookeeper.version>3.4.9</zookeeper.version>
-        <javassit.version>3.22.0-GA</javassit.version>
-        <java.mail.version>1.4.7</java.mail.version>
-        <mockito.version>3.4.0</mockito.version>
-        <junit.version>4.12</junit.version>
-        <skip.maven.deploy>false</skip.maven.deploy>
-        <sc.verions.sub>1</sc.verions.sub>
-        <source.encoding>UTF-8</source.encoding>
-        <spring-core.version>5.0.4.RELEASE</spring-core.version>
+        <skip.maven.deploy>true</skip.maven.deploy>
+        <cxf.version>3.2.2</cxf.version>
+        <springboot.version>2.0.0.RELEASE</springboot.version>
+        <jackson.version>2.9.4</jackson.version>
+        <querydsl.version>4.3.1</querydsl.version>
+        <hibernate-jpa.version>1.0.2.Final</hibernate-jpa.version>
+        <poi.version>3.17</poi.version>
+        <commons-collections4.version>4.4</commons-collections4.version>
+        <hibernate.version>5.3.7.Final</hibernate.version>
+        <mysql.version>8.0.22</mysql.version>
     </properties>
-
 
     <dependencyManagement>
         <dependencies>
-            <!--spring start-->
             <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-framework-bom</artifactId>
-                <version>${org.springframework.version}</version>
+                <!-- Import dependency management from Spring Boot -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${springboot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--spring end-->
-
-            <!--helper library start-->
-            <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>${guava.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <version>${lombok.version}</version>
-                <scope>provided</scope>
-            </dependency>
-            <!--helper library end-->
-
-            <!--code generation start-->
-            <dependency>
-                <groupId>org.javassist</groupId>
-                <artifactId>javassist</artifactId>
-                <version>${javassit.version}</version>
-            </dependency>
-            <!--code generation end-->
-
-            <!--log start-->
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-api</artifactId>
-                <version>${slf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-classic</artifactId>
-                <version>${logbak.version}</version>
-            </dependency>
-            <!--log end-->
-
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpasyncclient</artifactId>
-                <version>4.0.2</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-httpclient</groupId>
-                <artifactId>commons-httpclient</artifactId>
-                <version>3.1</version>
-                <type>jar</type>
-                <scope>compile</scope>
-                <optional>true</optional>
-            </dependency>
-
         </dependencies>
     </dependencyManagement>
+
     <dependencies>
-        <!--test start-->
         <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <scope>test</scope>
-            <version>${mockito.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-test</artifactId>
-            <version>${curator.version}</version>
-            <scope>test</scope>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
         </dependency>
-        <!--test end-->
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20140107</version>
+        </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.70</version>
         </dependency>
-
-        <!-- 包含了Zookeeper和Dubbo依赖 -->
         <dependency>
-            <groupId>com.alibaba.boot</groupId>
-            <artifactId>dubbo-spring-boot-starter</artifactId>
-            <version>0.2.0</version>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpasyncclient</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.googlecode.protobuf-java-format</groupId>
+            <artifactId>protobuf-java-format</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.8.1</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.2</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>helenlyn.grocery</groupId>
+            <artifactId>RpcCommon</artifactId>
+            <version>1.1.1</version>
+            <scope>compile</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -168,6 +148,7 @@
                         <encoding>${source.encoding}</encoding>
                     </configuration>
                 </plugin>
+
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>

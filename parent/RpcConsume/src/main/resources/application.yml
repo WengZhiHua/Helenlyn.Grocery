@@ -1,0 +1,15 @@
+bascong:
+  download-count: 1000
+  over-tip: 数据量不能超过%d，否则Excel装载过大会导致异常，如果数据量确实很大，请分开多次导出
+basic:
+  max-limit: 500
+  max-offset: 10000
+server:
+  port: 8887 # 指定端口
+# Dubbo Consumer 配置文件
+dubbo:
+  application:
+    name: rpc-consumer
+  registry:
+    address: 127.0.0.1:2181 # 使用Zookeeper注册中心提供的服务地址来获取服务，这边可以多个逗号隔开
+    protocol: zookeeper

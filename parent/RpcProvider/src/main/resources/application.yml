@@ -1,0 +1,20 @@
+bascong:
+  download-count: 1000
+  over-tip: 数据量不能超过%d，否则Excel装载过大会导致异常，如果数据量确实很大，请分开多次导出
+basic:
+  max-limit: 500
+  max-offset: 10000
+server:
+  port: 8889 # 指定端口
+# Dubbo Provider 配置
+dubbo:
+  application:
+    name: rpc-provider # 发布的dubbo服务名称
+  registry:
+    address: 127.0.0.1:2181  # 使用Zookeeper注册中心提供的服务地址，这边可以多个逗号隔开
+    protocol: zookeeper
+  protocol:
+    name: dubbo
+    port: 20882  # 用dubbo协议在20882端口暴露服务
+  scan: # 使用注解方式暴露接口，扫描的位置
+    base-packages: rpcprovider.modules.service
